@@ -1,0 +1,61 @@
+
+header {
+    background: 
+      linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url(../img/banner.jpg);
+    background-size: cover;
+    
+    height: 50vh;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner {
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*transform: translate(-50%, -50%);*/
+    text-align: center;
+
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 3rem;
+    white-space: nowrap;
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+  }
+  h1 {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 3rem;
+    white-space: nowrap;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  p {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  main {
+    max-width: 500px;
+    margin: 20px auto;
+  }

@@ -26,9 +26,9 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
       <h5 class="my-0 mr-md-auto font-weight-normal" v-on:click='tab = "main"'>SOS Bicharada</h5>
       <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="#" v-on:click='tab = "apadrinhamento"'>Apadrinhamento</a>
-        <a class="p-2 text-dark" href="#" v-on:click='tab = "ajudar"'>Ajudar</a>
-        <a class="p-2 text-dark" href="#" v-on:click='tab = "contactos"'>Contactos</a>
+        <a class="p-2 text-dark" href="#" @click='tab = "apadrinhamento"'>Apadrinhamento</a>
+        <a class="p-2 text-dark" href="#" @click='tab = "ajudar"'>Ajudar</a>
+        <a class="p-2 text-dark" href="#" @click='tab = "contactos"'>Contactos</a>
       </nav>
       <a class="btn btn-outline-primary" href="#">Sign up</a>
     </div>
@@ -51,11 +51,8 @@
     <div class="tab_apadrinhamento" v-if="tab==='apadrinhamento'">
       <div class="container">
         <div class="card-deck mb-3 text-center">
-            <cat-card 
-            v-for="cat in cats"
-            v-bind:cat="cat"
-            v-bind:key="cat.name">
-          </cat-card>
+          <!-- this is called 'installing the component' -->
+            <cat-card v-for="cat in cats" v-bind:cat="cat"></cat-card>
         </div>
       </div>    
     </div>
@@ -64,6 +61,15 @@
     </div>
 
     <div class="tab_contactos" v-if="tab==='contactos'">
+      <!--https://fontawesome.com/icons-->
+      <!-- https://fontawesome.com/how-to-use/svg-with-js#basic-use -->
+      <div style="font-size:3em; color:#3b5998">
+          <a href="https://www.facebook.com/sosbicharada/"><i class="fab fa-facebook-square">/sosbicharada</i></a>
+      </div>
+      <!--Email-->
+      <div style="font-size:3em; color:#3b5998"></div>
+        <i class="fas fa-envelope"></i>
+      </div>
     </div>
 
 
@@ -81,6 +87,8 @@
     crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
 
 
 
@@ -101,6 +109,23 @@
       -->
   <!-- development version, includes helpful console warnings -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- cat card template -->
+  <template id="cat-card">
+    <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">{{cat.name}}</h4> <!--cat.name is a prop-->
+        </div>
+        <div class="card-body">
+          <p>{{cat.description}}</p>
+          <button  v-if="!cat.sponsored" type="button" class="btn btn-lg btn-block btn-outline-primary" @click="sponsor">
+            Apadrinhar
+          </button>
+          <span v-if="cat.sponsored">Apadrinhado por: <b>{{cat.sponsor}}</b></span>
+        </div>
+      </div>
+  </template>
+  
 
   <!-- production version, optimized for size and speed -->
   <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
